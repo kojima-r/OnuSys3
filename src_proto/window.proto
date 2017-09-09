@@ -1,0 +1,7 @@
+package protocol;
+
+message Window{
+    required bool fullscreen=1;
+}
+
+

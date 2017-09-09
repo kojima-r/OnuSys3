@@ -1,0 +1,14 @@
+package protocol;
+
+message Config{
+    required string version=1;
+    repeated Obj2dString labels=3;
+}
+
+message Obj2dString{
+    required string name=1;
+    required string text=2;
+    required float x=3;
+    required float y=4;
+    required float rad=5;
+}
