@@ -3,7 +3,9 @@
 #include<QOpenGLWidget>
 #include"EncWorker.h"
 #include "SystemManagerSet.h"
+
 #include "Obj2dString.h"
+#include "Obj2dDistribution.h"
 #include<pbloader.h>
 #include<QBasicTimer>
 
@@ -22,8 +24,8 @@ public:
     SocketController* sock;
     GLfloat* vertexBufferGraphData;
     QBasicTimer timer;
-    Lockable distDataLock;
-    DistData distData;
+
+    std::vector<Obj2dDistribution*> objs_dist;
     std::vector<Obj2dString*> objs;
 protected:
     void timerEvent(QTimerEvent* e);

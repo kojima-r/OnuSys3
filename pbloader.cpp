@@ -73,26 +73,32 @@ bool PBLoader::saveConfig(const std::string& filename,bool binMode){
 }
 
 bool PBLoader::loadWindow(const std::string& filename,bool binMode){
+    protocol::Window window;
     if(binMode){
-        ofstream ofs(filename,ios::trunc|ios::binary);
-        if(!ofs){
+        ifstream ifs(filename,ios::binary);
+        if(!ifs.is_open()){
             // file not found
             return false;
-        }else if(!window.SerializeToOstream(&ofs)){
+        }else if(!config.ParseFromIstream(&ifs)){
             // format error
             return false;
         }
     }else{
-        ofstream ofs(filename,ios::trunc);
-        if(!ofs){
+        ifstream ifs(filename);
+        TextFormat::Parser parser;
+        if(!ifs.is_open()){
             // file not found
             return false;
-        }
-        io::OstreamOutputStream oss(&ofs);
-        if(!TextFormat::Print(window,&oss)){
-            return false;
+        }else{
+            io::IstreamInputStream iss(&ifs);
+            if(!parser.Parse(&iss,&window)){
+                // format error
+                return false;
+            }
+
         }
     }
+    this->window.MergeFrom(window);
     return true;
 }
 

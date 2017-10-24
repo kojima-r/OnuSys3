@@ -14,16 +14,11 @@
 #include <list>
 #include <vector>
 #include "PTUCoreTimer.h"
+#include "Obj2dDistribution.h"
+
 //static const int NUM_DIST=37;
 
-struct DistData{
-    std::vector<float> data;
-    DistData(int n,float a){
-        data.resize(n,a);
-    }
-    DistData(){
-    }
-};
+
 
 class EncWorker :public ThreadWorker{
 public:

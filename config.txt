@@ -1,260 +1,106 @@
 version: "1.0"
 labels {
 name: "label0"
-text: "kijibato"
-x: -1.000000
-y: -0.500000
-rad: -1.2
+text: "kakko"
+x: -1.020000
+y: -0.200000
+rad: -1.200000
 }
 labels {
 name: "label1"
-text: "hototogisu"
-x: -0.954167
-y: -0.500000
-rad: -1.2
+text: "akagera"
+x: -0.898571
+y: -0.200000
+rad: -1.200000
 }
 labels {
 name: "label2"
-text: "tsutsudori"
-x: -0.908333
-y: -0.500000
-rad: -1.2
+text: "kakesu"
+x: -0.777143
+y: -0.200000
+rad: -1.200000
 }
 labels {
 name: "label3"
-text: "kakko"
-x: -0.862500
-y: -0.500000
-rad: -1.2
+text: "hashibosogarasu"
+x: -0.655714
+y: -0.200000
+rad: -1.200000
 }
 labels {
 name: "label4"
-text: "kogera"
-x: -0.816667
-y: -0.500000
-rad: -1.2
+text: "hashibutogarasu"
+x: -0.534286
+y: -0.200000
+rad: -1.200000
 }
 labels {
 name: "label5"
-text: "akagera"
-x: -0.770833
-y: -0.500000
-rad: -1.2
+text: "shijuukara"
+x: -0.412857
+y: -0.200000
+rad: -1.200000
 }
 labels {
 name: "label6"
-text: "aogera"
-x: -0.725000
-y: -0.500000
-rad: -1.2
+text: "uguisu"
+x: -0.291429
+y: -0.200000
+rad: -1.200000
 }
 labels {
 name: "label7"
-text: "sanshoukui"
-x: -0.679167
-y: -0.500000
-rad: -1.2
+text: "yabusame"
+x: -0.170000
+y: -0.200000
+rad: -1.200000
 }
 labels {
 name: "label8"
-text: "kakesu"
-x: -0.633333
-y: -0.500000
-rad: -1.2
+text: "sendaimushikui"
+x: -0.048571
+y: -0.200000
+rad: -1.200000
 }
 labels {
 name: "label9"
-text: "hashibosogarasu"
-x: -0.587500
-y: -0.500000
-rad: -1.2
+text: "mejiro"
+x: 0.072857
+y: -0.200000
+rad: -1.200000
 }
 labels {
 name: "label10"
-text: "hashibutogarasu"
-x: -0.541667
-y: -0.500000
-rad: -1.2
+text: "koruri"
+x: 0.194286
+y: -0.200000
+rad: -1.200000
 }
 labels {
 name: "label11"
-text: "kikuitadaki"
-x: -0.495833
-y: -0.500000
-rad: -1.2
+text: "kibitaki"
+x: 0.315714
+y: -0.200000
+rad: -1.200000
 }
 labels {
 name: "label12"
-text: "kogara"
-x: -0.450000
-y: -0.500000
-rad: -1.2
+text: "ooruri"
+x: 0.437143
+y: -0.200000
+rad: -1.200000
 }
 labels {
 name: "label13"
-text: "yamagara"
-x: -0.404167
-y: -0.500000
-rad: -1.2
+text: "suzume"
+x: 0.558571
+y: -0.200000
+rad: -1.200000
 }
 labels {
 name: "label14"
-text: "higara"
-x: -0.358333
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label15"
-text: "shijuukara"
-x: -0.312500
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label16"
-text: "hiyodorihina"
-x: -0.266667
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label17"
-text: "uguisu"
-x: -0.220833
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label18"
-text: "yabusame"
-x: -0.175000
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label19"
-text: "enaga"
-x: -0.129167
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label20"
-text: "sendaimushikui"
-x: -0.083333
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label21"
-text: "mejiro"
-x: -0.037500
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label22"
-text: "gojyuukara"
-x: 0.008333
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label23"
-text: "mukudori"
-x: 0.054167
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label24"
-text: "kurotsugumi"
-x: 0.100000
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label25"
-text: "akahara"
-x: 0.145833
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label26"
-text: "koruri"
-x: 0.191667
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label27"
-text: "kibitaki"
-x: 0.237500
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label28"
-text: "ooruri"
-x: 0.283333
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label29"
-text: "suzume"
-x: 0.329167
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label30"
-text: "kisekirei"
-x: 0.375000
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label31"
-text: "hakusekirei"
-x: 0.420833
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label32"
-text: "segurosekirei"
-x: 0.466667
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label33"
-text: "kawarahiwa"
-x: 0.512500
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label34"
-text: "ikaru"
-x: 0.558333
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label35"
-text: "hoojiro"
-x: 0.604167
-y: -0.500000
-rad: -1.2
-}
-labels {
-name: "label36"
 text: "gabicho"
-x: 0.650000
-y: -0.500000
-rad: -1.2
+x: 0.680000
+y: -0.200000
+rad: -1.200000
 }

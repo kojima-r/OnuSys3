@@ -16,7 +16,7 @@
 const static int MAX_NUM_TEXTURE =1024;
 class TextureManager;
 struct TextureInfo{
-    TextureInfo():left_u(0.0),right_u(1.0),top_v(0.0),top_bottom(1.0),adv_x(0),adv_y(0){
+    TextureInfo():adv_x(0),adv_y(0),left_u(0.0),right_u(1.0),top_v(0.0),top_bottom(1.0){
     }
     int id;
     std::string name;

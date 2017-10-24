@@ -7,9 +7,12 @@ target_label=[label[str(lid)] for lid in enabled_label]
 
 
 print('version: "1.0"')
-x_min=-1.0
-x_max=0.65
-y=-0.5
+dx=-0.12
+x_min=-0.9+dx
+x_max=0.8+dx
+y=-0.2
+rad=-1.2
+
 num=len(target_label)
 
 dx=(x_max-x_min)/(num-1)
@@ -21,6 +24,6 @@ for i in range(num):
  	print('text: "%s"'%(target_label[i]))
 	print('x: %f'%(x))
 	print('y: %f'%(y))
-	print('rad: -1.2')
+	print('rad: %f'%(rad))
 	print('}')
 

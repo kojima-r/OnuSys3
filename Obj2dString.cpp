@@ -53,10 +53,10 @@ void Obj2dString::render(){
             double pix_scale=1.0/460.0*scale;
             double w=ptr->width*pix_scale;
             double h=ptr->height*pix_scale;
-            double temp_x=ptr->pos_x*1.0/ptr->width*w;
-            double temp_y=(ptr->pos_y*1.0/ptr->height*h);
-            double adv_x=ptr->adv_x*1.0/ptr->width*w;
-            double adv_y=ptr->adv_y*1.0/ptr->height*h;
+            double temp_x=ptr->pos_x*pix_scale;
+            double temp_y=(ptr->pos_y*pix_scale);
+            double adv_x=ptr->adv_x*pix_scale;
+            double adv_y=ptr->adv_y*pix_scale;
             double pos_x=next_pos_x+temp_x;
             double pos_y=next_pos_y+temp_y;
             buf[i*step+5*0+0]*=w;

@@ -122,40 +122,34 @@ void MyCanvasWidget::initializeGL(){
     managers.textureManager.loadCharacters("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
     managers.textureManager.loadCharacters("0123456789");
     managers.textureManager.loadTexture("red");
-    managers.textureManager.loadTexture("/home/nvidia/Qt/test03/test.png");
+    managers.textureManager.loadTexture("/home/nvidia/Qt/test04/back.jpg");
+
 
     managers.vertexBufferManager.init();
     {
-        auto ptr=managers.vertexBufferManager.buildBuffer("test");
+        std::string name="back";
+        auto ptr=managers.vertexBufferManager.buildBuffer(name);
         std::vector<GLfloat> buf={
-            -1.0f, -1.0f, 0.0f, 0.0f,0.0f,
-            1.0f, -1.0f, 0.0f,  0.0f,1.0f,
-            1.0f,  1.0f, 0.0f,  1.0f,1.0f,
-             -1.0f, 1.0f, 0.0f, 1.0f,0.0f,
-
-             -0.5f, -0.5f, 0.0f, 0.0f,0.0f,
-             0.5f, -0.5f, 0.0f,  0.0f,1.0f,
-             0.5f,  0.5f, 0.0f,  1.0f,1.0f,
-              -0.5f, 0.5f, 0.0f, 1.0f,0.0f,
-
-             -0.9f, -0.1f, 0.0f, 0.0f,0.0f,
-             -0.9f, 0.1f, 0.0f,  0.0f,1.0f,
-             0.0f, -0.1f, 0.0f,  0.5f,1.0f,
-             0.0f,  0.0f, 0.0f,  0.5f,0.0f,
-             0.9f, -0.1f, 0.0f,  1.0f,1.0f,
-             0.9f,  0.1f, 0.0f,  1.0f,0.0f,
+            -1.0f, -1.0f, 0.0f, 0.0f,1.0f,
+            1.0f, -1.0f, 0.0f,  1.0f,1.0f,
+            1.0f,  1.0f, 0.0f,  1.0f,0.0f,
+             -1.0f, 1.0f, 0.0f, 0.0f,0.0f,
         };
 
-        int n=dist_num*2;
-        int offset=4+4;
-        buf.resize(5*(offset+n),0);
-
+        int n=4;
+        int offset=0;
         ptr->buffer=buf;
         // position
         ptr->attr.push_back(VBAttribute(0, 3, sizeof(GL_FLOAT)*5, 0));
         // uv
         ptr->attr.push_back(VBAttribute(1, 2, sizeof(GL_FLOAT)*5, 0+sizeof(GL_FLOAT)*3));
-        managers.vertexBufferManager.setBuffer("test");
+        managers.vertexBufferManager.setBuffer(name);
+    }
+    {
+
+        Obj2dDistribution* obj =new Obj2dDistribution(&managers);
+        obj->init(dist_num);
+        objs_dist.push_back(obj);
     }
 
     for(auto& l :pbLoader.config.labels()){
@@ -184,15 +178,12 @@ void MyCanvasWidget::initializeGL(){
 }
 
 void MyCanvasWidget::timerEvent(QTimerEvent* e){
-    printf("==\n");
-    distDataLock.lock();
-    distData=enc->getLatestData();
-    printf("<%d>",distData.data.size());
-    for(int j=0;j<3;j++){
-        printf("[%f]",distData.data[j]);
-    }
-    distDataLock.unlock();
 
+    //
+    for(auto& o:objs_dist){
+        o->update(enc);
+    }
+    //
     this->update();
 }
 
@@ -215,58 +206,21 @@ void MyCanvasWidget::paintGL(){
     //
     // バッファ
     //
-    int dist_num=pbLoader.config.labels_size();
-    distData.data.resize(dist_num);
-    static int cnt=0;
-    int n=dist_num*2;
-    float gain=2.0;
-    auto ptr=managers.vertexBufferManager.getBuffer("test");
     {
-        int offset=4+4;
-        distDataLock.lock();
-        std::vector<GLfloat>& buf=ptr->buffer;
-        cnt++;
-        for(int i=0;i<n;i++){
-            int j=(i/2);
-            float r=j*1.0f/((n/2)-1);
-            float r0=-0.9f;
-            float r1=0.9f;
-            float v0=-0.1f;
-            float v1=0.1f+distData.data[j]*gain;
-
-            buf[5*(offset+i)+0]=r*(r1-r0)+r0;
-            if(i%2==0){
-                buf[5*(offset+i)+1]=v0;
-                buf[5*(offset+i)+4]=0.0f;
-            }else{
-                buf[5*(offset+i)+1]=v1;
-                buf[5*(offset+i)+4]=1.0f;
-            }
-            buf[5*(offset+i)+2]=0.0f;
-            buf[5*(offset+i)+3]=r;
-
-        }
-        distDataLock.unlock();
+        std::string name="back";
+        managers.vertexBufferManager.setBuffer(name);
+        managers.vertexBufferManager.enableBuffer(name);
+        GLuint textureIndex;
+        textureIndex=managers.textureManager.getTexture("/home/nvidia/Qt/test04/back.jpg")->textureIndex;
+        glBindTexture(GL_TEXTURE_2D,textureIndex);
+        glDrawArrays(GL_POLYGON, 0, 4); // 0-3 =>
     }
-    managers.vertexBufferManager.setBuffer("test");
-    // 最初の属性バッファ：頂点
-    managers.vertexBufferManager.enableBuffer("test");
-
-    GLuint textureIndex;
-    textureIndex=managers.textureManager.getTexture("/home/nvidia/Qt/test03/test.png")->textureIndex;
-    glBindTexture(GL_TEXTURE_2D,textureIndex);
-    glDrawArrays(GL_POLYGON, 0, 4); // 0-3 =>
-
-    textureIndex=managers.textureManager.getTexture("@b")->textureIndex;
-    glBindTexture(GL_TEXTURE_2D,textureIndex);
-    glDrawArrays(GL_POLYGON, 4, 4); //
-
-    textureIndex=managers.textureManager.getTexture("red")->textureIndex;
-    glBindTexture(GL_TEXTURE_2D,textureIndex);
-    glDrawArrays(GL_TRIANGLE_STRIP, 8, n); //
 
     //
     for(auto& o:objs){
+        o->render();
+    }
+    for(auto& o:objs_dist){
         o->render();
     }
     //
